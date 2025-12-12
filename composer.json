@@ -1,0 +1,34 @@
+{
+    "name": "hymns/alertiqo-client-php",
+    "description": "Alertiqo - Laravel error tracking package, as simple as possible!",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["laravel", "error-tracking", "monitoring", "bug-detector"],
+    "authors": [
+        {
+            "name": "Muhammad Hamizi Jaminan",
+            "email": "hello@hamizi.net"
+        }
+    ],
+    "require": {
+        "php": "^8.0|^8.1|^8.2",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Alertiqo\\Laravel\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Alertiqo\\Laravel\\AlertiqoServiceProvider"
+            ],
+            "aliases": {
+                "Alertiqo": "Alertiqo\\Laravel\\Facades\\Alertiqo"
+            }
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

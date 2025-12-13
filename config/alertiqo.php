@@ -34,7 +34,7 @@ return [
     |
     */
 
-    'endpoint' => env('ALERTIQO_ENDPOINT', 'https://alertiqo.io/api'),
+    'endpoint' => env('ALERTIQO_ENDPOINT', 'https://alertiqo.io'),
 
     /*
     |--------------------------------------------------------------------------

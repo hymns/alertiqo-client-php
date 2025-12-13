@@ -56,7 +56,7 @@ ALERTIQO_API_KEY=your-api-key-here
 ALERTIQO_ENDPOINT=https://alertiqo.hamizi.net
 ```
 
-**That's it!** All exceptions akan automatically tracked.
+**That's it!** All exceptions will be automatically tracked.
 
 **4. Test your setup:**
 ```bash
@@ -81,7 +81,7 @@ php artisan vendor:publish --tag=alertiqo-client-config
 
 ### Queue Configuration (Recommended)
 
-**By default, Alertiqo uses queues** untuk send error reports secara async. Ini ensures your app tetap fast even when reporting errors.
+**By default, Alertiqo uses queues** to send error reports asynchronously. This will ensures your app stay fast even when reporting errors.
 
 **Prerequisites:**
 
@@ -105,7 +105,7 @@ This will send reports synchronously, which may slow down responses if the API i
 
 ### SQL Query Logging
 
-**Automatically capture database queries as breadcrumbs** untuk easier debugging!
+**Automatically capture database queries as breadcrumbs** for easier debugging!
 
 **Enable SQL logging:**
 
@@ -172,7 +172,7 @@ ALERTIQO_PERFORMANCE_THRESHOLD=1000  # Report requests > 1 second
 
 ### Error Sampling
 
-**Control error capture rate** untuk high-traffic applications:
+**Control error capture rate** for high-traffic applications:
 
 ```env
 ALERTIQO_SAMPLE_RATE=0.1  # Capture 10% of errors
@@ -199,7 +199,7 @@ ALERTIQO_SAMPLE_RATE=0.1  # Capture 10% of errors
 php artisan alertiqo:test
 ```
 
-This will send a test error to your dashboard. Perfect untuk verify setup!
+This will send a test error to your dashboard. Perfect to verify setup!
 
 **Debug Route (Development Only):**
 
@@ -214,7 +214,7 @@ if (app()->environment('local')) {
 }
 ```
 
-Visit `/debug-alertiqo` dalam browser, then check your dashboard.
+Visit `/debug-alertiqo` using web browser, then check your dashboard.
 
 ## Notifications
 
@@ -242,7 +242,7 @@ Visit `/debug-alertiqo` dalam browser, then check your dashboard.
 
 ### Automatic Error Tracking
 
-Package ini automatically track semua exceptions dalam aplikasi Laravel anda. Tidak perlu setup tambahan!
+This package will automatically track all exceptions in your Laravel app. No additional setup needed!
 
 ### Manual Error Capture
 
@@ -456,7 +456,7 @@ ALERTIQO_SAMPLE_RATE=1.0
 
 ### Config File (`config/alertiqo.php`)
 
-Customize behaviour dalam config file:
+Customize behaviour in the config file:
 
 - `enabled` - Enable/disable tracking
 - `api_key` - Your API key
@@ -472,9 +472,9 @@ Customize behaviour dalam config file:
 - `performance_monitoring` - Track slow requests (default: false)
 - `performance_threshold` - Report requests slower than this in ms (default: 1000)
 - `sample_rate` - Error sampling rate 0.0-1.0 (default: 1.0)
-- `send_request_data` - Include request data dalam reports
-- `sensitive_keys` - Keys untuk filter dari request data
-- `dont_report` - Exception classes yang tidak perlu report
+- `send_request_data` - Include request data in reports
+- `sensitive_keys` - Keys to filter from request data
+- `dont_report` - Exception classes to be excluded from reporting
 
 ## Features
 
@@ -501,7 +501,7 @@ Customize behaviour dalam config file:
 
 ## Testing
 
-Package ini automatically disabled dalam testing environment. Set `ALERTIQO_ENABLED=false` dalam `.env.testing`.
+This package will be automatically disabled in testing environment. Set `ALERTIQO_ENABLED=false` in `.env.testing`.
 
 ## License
 

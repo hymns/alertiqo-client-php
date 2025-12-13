@@ -53,7 +53,7 @@ return Application::configure(basePath: dirname(__DIR__))
 **3. Add `.env` config:**
 ```env
 ALERTIQO_API_KEY=your-api-key-here
-ALERTIQO_ENDPOINT=https://alertiqo.hamizi.net
+ALERTIQO_ENDPOINT=https://alertiqo.io
 ```
 
 **That's it!** All exceptions will be automatically tracked.
@@ -70,7 +70,7 @@ For Laravel 9/10, package will auto-register via composer. Just set `.env` varia
 ```env
 ALERTIQO_ENABLED=true
 ALERTIQO_API_KEY=your-api-key-here
-ALERTIQO_ENDPOINT=https://alertiqo.hamizi.net
+ALERTIQO_ENDPOINT=https://alertiqo.io
 ```
 
 **Optional - Publish config file:**

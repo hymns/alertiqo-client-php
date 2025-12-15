@@ -50,25 +50,38 @@ class AlertiqoServiceProvider extends ServiceProvider
         if (!$this->app->runningInConsole()) {
             $this->app['router']->aliasMiddleware('alertiqo.capture', CaptureErrors::class);
         }
+
+        // Auto-register exception handler for Laravel 11+
+        $this->registerExceptionReporting();
     }
 
     /**
-     * Register the exception handler for error reporting.
+     * Register exception reporting for all Laravel versions.
      *
      * @return void
      */
-    protected function registerExceptionHandler(): void
+    protected function registerExceptionReporting(): void
     {
+        if (!config('alertiqo.enabled', true)) {
+            return;
+        }
+
         $handler = $this->app->make(ExceptionHandler::class);
 
-        $originalReport = $handler->report(...);
-
-        $handler->reportable(function (Throwable $e) use ($originalReport) {
+        // Use reportable() which works in Laravel 9, 10, 11, 12
+        $handler->reportable(function (Throwable $e) {
             if ($this->shouldReport($e)) {
-                app('alertiqo')->captureException($e);
+                try {
+                    app('alertiqo')->captureException($e);
+                } catch (Throwable $reportingError) {
+                    if (config('alertiqo.debug', false)) {
+                        \Log::error('Alertiqo: Failed to capture exception', [
+                            'error' => $reportingError->getMessage()
+                        ]);
+                    }
+                }
             }
-            return $originalReport($e);
-        });
+        })->stop(false); // Don't stop default reporting
     }
 
     /**

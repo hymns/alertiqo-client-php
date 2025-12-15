@@ -66,7 +66,7 @@ class TestCommand extends Command
 
             $this->newLine();
             $this->components->info('Test error sent successfully!');
-            $this->components->info('Check your Alertiqo dashboard at: ' . config('alertiqo.endpoint', 'http://localhost:8000'));
+            $this->components->info('Check your Alertiqo dashboard at: ' . config('alertiqo.endpoint', 'https://alertiqo.io'));
             $this->newLine();
             
             $this->components->twoColumnDetail('Error Message', $e->getMessage());

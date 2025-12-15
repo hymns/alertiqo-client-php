@@ -23,7 +23,7 @@ php artisan vendor:publish --tag=alertiqo-client-config
 
 This will create `config/alertiqo.php` for customization.
 
-## Quick Setup (Laravel 11+)
+## Quick Setup (Laravel 9, 10, 11, 12)
 
 **1. Install package:**
 
@@ -31,26 +31,7 @@ This will create `config/alertiqo.php` for customization.
 composer require hymns/alertiqo-client-php
 ```
 
-**2. Add to `bootstrap/app.php`:**
-```php
-use Alertiqo\Laravel\Integration;
-
-return Application::configure(basePath: dirname(__DIR__))
-    ->withRouting(
-        web: __DIR__.'/../routes/web.php',
-        commands: __DIR__.'/../routes/console.php',
-        health: '/up',
-    )
-    ->withMiddleware(function (Middleware $middleware) {
-        //
-    })
-    ->withExceptions(function (Exceptions $exceptions) {
-        Integration::handles($exceptions);
-    })
-    ->create();
-```
-
-**3. Add `.env` config:**
+**2. Add `.env` config:**
 ```env
 ALERTIQO_API_KEY=your-api-key-here
 ALERTIQO_ENDPOINT=https://alertiqo.io
@@ -58,19 +39,9 @@ ALERTIQO_ENDPOINT=https://alertiqo.io
 
 **That's it!** All exceptions will be automatically tracked.
 
-**4. Test your setup:**
+**3. Test your setup:**
 ```bash
 php artisan alertiqo:test
-```
-
-## Laravel 9/10 Setup
-
-For Laravel 9/10, package will auto-register via composer. Just set `.env` variables and you're done!
-
-```env
-ALERTIQO_ENABLED=true
-ALERTIQO_API_KEY=your-api-key-here
-ALERTIQO_ENDPOINT=https://alertiqo.io
 ```
 
 **Optional - Publish config file:**
